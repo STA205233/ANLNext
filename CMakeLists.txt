@@ -29,6 +29,7 @@ option(ANLNEXT_USE_G4VECTOR "enable Geant4-CLHEP vector" OFF)
 ## install options
 option(ANLNEXT_INSTALL_HEADERS "install all header files" ON)
 option(ANLNEXT_INSTALL_CMAKE_FILES "install all cmake files" ON)
+option(APT_RUBY "Use ruby installed by apt" OFF)
 ## shortcut options
 option(ANLNEXT_USE_ALL "use all libraries" OFF)
 
@@ -37,6 +38,10 @@ if(ANLNEXT_USE_ALL)
   set(ANLNEXT_USE_TVECTOR ON)
   set(ANLNEXT_USE_G4VECTOR ON)
 endif(ANLNEXT_USE_ALL)
+
+if(APT_RUBY)
+  set(RUBY_CONFIG_FILE_DIR "/usr/include/arm-linux-gnueabihf/ruby-2.7.0")
+endif(APT_RUBY)
 
 ### subdirecties
 add_subdirectory(source)
