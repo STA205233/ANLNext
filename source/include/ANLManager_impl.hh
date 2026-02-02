@@ -23,6 +23,7 @@
 #include "ANLManager.hh"
 #include "BasicModule.hh"
 #include "ANLException.hh"
+#define ANL_DEBUG 0
 
 namespace anlnext
 {
@@ -93,6 +94,9 @@ ANLStatus routine_modfn_impl(T func,
     if (mod->is_off()) { continue; }
     
     try {
+      #ifdef ANL_DEBUG
+      std::cout << "ANLManager: Calling " << mod->module_id() << "::mod_" << func_id << "()" << std::endl;
+      #endif
       status = ((*mod).*func)();
     }
     catch (ANLException& ex) {
